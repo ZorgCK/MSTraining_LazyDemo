@@ -14,6 +14,7 @@ import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import one.microstream.DB;
 import one.microstream.domain.Author;
+import one.microstream.reference.Lazy;
 
 
 @Controller("/authors")
@@ -43,9 +44,11 @@ public class AuthorController
 			try
 			{
 				Author author = findFirst.get();
-				author.setImage(IOUtils.toByteArray(isOptional.get()));
+				author.setImage(Lazy.Reference(IOUtils.toByteArray(isOptional.get())));
 				
 				DB.storageManager.store(author);
+				
+				// author.getImage().clear();
 			}
 			catch(IOException e)
 			{
