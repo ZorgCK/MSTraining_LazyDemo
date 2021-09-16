@@ -21,5 +21,12 @@ public class DB
 		
 		storageManager = EmbeddedStorageConfiguration.load(
 			resource.get().getPath()).createEmbeddedStorageFoundation().createEmbeddedStorageManager(root).start();
+		
+		// LazyReferenceManager.set(
+		// LazyReferenceManager.New(
+		// Lazy.Checker(
+		// Duration.ofMinutes(30).toMillis(), // timeout of lazy access
+		// 0.75 // memory quota
+		// )));
 	}
 }
