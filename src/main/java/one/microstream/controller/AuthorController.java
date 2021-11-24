@@ -49,6 +49,7 @@ public class AuthorController
 				DB.storageManager.store(author);
 				
 				// author.getImage().clear();
+				// System.gc();
 			}
 			catch(IOException e)
 			{

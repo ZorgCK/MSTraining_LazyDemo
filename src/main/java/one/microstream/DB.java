@@ -1,10 +1,13 @@
 package one.microstream;
 
 import java.net.URL;
+import java.time.Duration;
 import java.util.Optional;
 
 import io.micronaut.core.io.ResourceResolver;
 import io.micronaut.core.io.scan.ClassPathResourceLoader;
+import one.microstream.reference.Lazy;
+import one.microstream.reference.LazyReferenceManager;
 import one.microstream.storage.embedded.configuration.types.EmbeddedStorageConfiguration;
 import one.microstream.storage.embedded.types.EmbeddedStorageManager;
 
@@ -19,14 +22,15 @@ public class DB
 		ClassPathResourceLoader loader = new ResourceResolver().getLoader(ClassPathResourceLoader.class).get();
 		Optional<URL> resource = loader.getResource("microstream.xml");
 		
+		LazyReferenceManager.set(
+			LazyReferenceManager.New(
+				Lazy.Checker(
+					Duration.ofMinutes(30).toMillis(), // timeout of lazy access
+					0.75 // memory quota
+				)));
+				
 		storageManager = EmbeddedStorageConfiguration.load(
 			resource.get().getPath()).createEmbeddedStorageFoundation().createEmbeddedStorageManager(root).start();
 		
-		// LazyReferenceManager.set(
-		// LazyReferenceManager.New(
-		// Lazy.Checker(
-		// Duration.ofMinutes(30).toMillis(), // timeout of lazy access
-		// 0.75 // memory quota
-		// )));
 	}
 }
