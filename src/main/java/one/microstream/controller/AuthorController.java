@@ -60,7 +60,7 @@ public class AuthorController
 	}
 	
 	@Get
-	public List<Author> getBook()
+	public List<Author> getAuthors()
 	{
 		return DB.root.getAuthors();
 	}
