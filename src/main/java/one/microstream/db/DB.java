@@ -1,4 +1,4 @@
-package one.microstream;
+package one.microstream.db;
 
 import java.net.URL;
 import java.util.Optional;
