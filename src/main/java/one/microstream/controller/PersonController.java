@@ -20,17 +20,27 @@ public class PersonController
 	{
 		IntStream.range(1, 201).forEach(i -> {
 			List<Person> persons = MockupUtils.loadMockupData();			
-			DB.root.getPersons().addAll(persons);
+			DB.root.getPersons().get().addAll(persons);
 		});
 				
-		DB.storageManager.store(DB.root.getPersons());
+		DB.storageManager.store(DB.root.getPersons().get());
+
+		System.out.println(DB.root.getPersons().get().size());
 		
-		return HttpResponse.ok("Persons successfully created! " + DB.root.getPersons().size() + " in total.");
+//		Lazy.clear(DB.root.getPersons());
+		
+		return HttpResponse.ok("Persons successfully created!");
 	}
 		
 	@Get
 	public List<String> getPersons()
 	{
-		return DB.root.getPersons().stream().map(p -> p.getUuid()).collect(Collectors.toList());
+		return DB.root.getPersons().get().stream().map(p -> p.getUuid()).collect(Collectors.toList());
+	}
+	
+	@Get("/init")
+	public String initMicroStream()
+	{
+		return DB.storageManager.toString();
 	}
 }

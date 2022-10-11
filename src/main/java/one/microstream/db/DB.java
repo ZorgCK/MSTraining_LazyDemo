@@ -19,7 +19,12 @@ public class DB
 		ClassPathResourceLoader loader = new ResourceResolver().getLoader(ClassPathResourceLoader.class).get();
 		Optional<URL> resource = loader.getResource("microstream.xml");
 		
+//		LazyReferenceManager.set(LazyReferenceManager.New(
+//			Lazy.Checker(Duration.ofMinutes(1).toMillis())
+//			)).start();
+		
 		storageManager = EmbeddedStorageConfiguration.load(
 			resource.get().getPath()).createEmbeddedStorageFoundation().createEmbeddedStorageManager(root).start();
+		
 	}
 }
