@@ -1,7 +1,7 @@
 package one.microstream.controller;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Set;
 import java.util.stream.IntStream;
 
 import io.micronaut.http.HttpResponse;
@@ -20,22 +20,20 @@ public class PersonController
 	{
 		IntStream.range(1, 201).forEach(i -> {
 			List<Person> persons = MockupUtils.loadMockupData();			
-			DB.root.getPersons().get().addAll(persons);
+			DB.root.addPersons(persons);
 		});
 				
-		DB.storageManager.store(DB.root.getPersons().get());
+		DB.storageManager.store(DB.root.getPersons());
 
-		System.out.println(DB.root.getPersons().get().size());
-		
-//		Lazy.clear(DB.root.getPersons());
+		System.out.println(DB.root.getPersons().size());
 		
 		return HttpResponse.ok("Persons successfully created!");
 	}
 		
 	@Get
-	public List<String> getPersons()
+	public Set<String> getPersons()
 	{
-		return DB.root.getPersons().get().stream().map(p -> p.getUuid()).collect(Collectors.toList());
+		return DB.root.getPersons().keySet();
 	}
 	
 	@Get("/init")
