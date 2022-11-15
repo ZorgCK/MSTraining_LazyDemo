@@ -3,6 +3,7 @@ package one.microstream.db;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import one.microstream.domain.Person;
 import one.microstream.reference.Lazy;
@@ -19,10 +20,6 @@ public class DataRoot
 
 	public void addPersons(List<Person> persons)
 	{
-		persons.stream().forEach(p -> this.persons.put(p.getUuid()+"_"+p.getLastname(), Lazy.Reference(p)));
-	}
-
-	
-	
-	
+		persons.stream().forEach(p -> this.persons.put(p.getMail() + " " + UUID.randomUUID().toString(), Lazy.Reference(p)));
+	}	
 }
