@@ -1,11 +1,7 @@
 package one.microstream.domain;
 
-import java.util.UUID;
-
-
 public class Person
 {
-	private String	uuid	= UUID.randomUUID().toString();
 	private String	firstname;
 	private String	lastname;
 	private String	mail;
@@ -13,16 +9,6 @@ public class Person
 	private String	ip;
 	private String	value1;
 	private String	value2;
-	
-	public String getUuid()
-	{
-		return uuid;
-	}
-	
-	public void setUuid(String uuid)
-	{
-		this.uuid = uuid;
-	}
 	
 	public String getFirstname()
 	{

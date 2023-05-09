@@ -27,8 +27,6 @@ public class PersonController
 		});
 				
 		DB.storageManager.store(DB.root.getPersons());
-
-		System.out.println(DB.root.getPersons().size());
 		
 		return HttpResponse.ok("Persons successfully created!");
 	}
