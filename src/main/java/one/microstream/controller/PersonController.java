@@ -33,4 +33,10 @@ public class PersonController
 	{
 		return DB.root.getPersons().stream().map(p -> p.getLastname()).collect(Collectors.toList());
 	}
+	
+	@Get("/init")
+	public String initMicroStream()
+	{
+		return DB.storageManager.toString();
+	}
 }
