@@ -14,7 +14,7 @@ public class Persons
 {
 	private Map<String, Lazy<List<Person>>>	personsByLastname	= new HashMap<String, Lazy<List<Person>>>();
 	private Map<String, Lazy<List<Person>>>	personsByMail		= new HashMap<String, Lazy<List<Person>>>();
-	private Map<String, Lazy<List<Person>>>	personsByID			= new HashMap<String, Lazy<List<Person>>>();
+	private Map<String, Lazy<List<Person>>>	personsByIP			= new HashMap<String, Lazy<List<Person>>>();
 	
 	public void addPersons(List<Person> persons)
 	{
@@ -26,8 +26,8 @@ public class Persons
 			this.personsByMail.computeIfAbsent(
 				p.getMail().substring(0, 2),
 				k -> Lazy.Reference(new ArrayList<>())).get().add(p);
-			this.personsByID.computeIfAbsent(
-				p.getUuid().substring(0, 2),
+			this.personsByIP.computeIfAbsent(
+				p.getIp().substring(0, 2),
 				k -> Lazy.Reference(new ArrayList<>())).get().add(p);
 		});
 	}
@@ -38,8 +38,8 @@ public class Persons
 		es.store(personsByLastname);
 		es.commit();
 		
-		persiter.storeAll(personsByID);
-		es.store(personsByID);
+		persiter.storeAll(personsByIP);
+		es.store(personsByIP);
 		es.commit();
 		
 		persiter.storeAll(personsByMail);
@@ -67,14 +67,14 @@ public class Persons
 		this.personsByMail = personsByMail;
 	}
 	
-	public Map<String, Lazy<List<Person>>> getPersonsByID()
+	public Map<String, Lazy<List<Person>>> getPersonsByIP()
 	{
-		return personsByID;
+		return personsByIP;
 	}
 	
-	public void setPersonsByID(Map<String, Lazy<List<Person>>> personsByID)
+	public void setPersonsByIP(Map<String, Lazy<List<Person>>> personsByIP)
 	{
-		this.personsByID = personsByID;
+		this.personsByIP = personsByIP;
 	}
 	
 }
