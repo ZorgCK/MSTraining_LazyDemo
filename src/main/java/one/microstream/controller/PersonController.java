@@ -38,8 +38,7 @@ public class PersonController
 	{
 		Map<String,Lazy<List<Person>>> personsByLastname = DB.root.getPersonContainer().getPersonsByLastname();
 		
-		Lazy<List<Person>> lazy = DB.root.getPersonContainer().getPersonsByLastname()
-		.get(lastname.substring(0,2));
+		Lazy<List<Person>> lazy = personsByLastname.get(lastname.substring(0,2));
 		
 		if(lazy != null)
 		{
