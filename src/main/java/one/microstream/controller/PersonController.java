@@ -31,6 +31,6 @@ public class PersonController
 	@Get
 	public List<String> getPersons()
 	{
-		return DB.root.getPersons().stream().map(p -> p.getUuid()).collect(Collectors.toList());
+		return DB.root.getPersons().stream().map(p -> p.getLastname()).collect(Collectors.toList());
 	}
 }
