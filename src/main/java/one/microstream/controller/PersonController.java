@@ -24,7 +24,8 @@ public class PersonController
 		});
 				
 		DB.storageManager.store(DB.root.getPersons());
-
+		DB.root.getPersons().segments().forEach(s -> s.unloadSegment());
+				
 		return HttpResponse.ok("Persons successfully created!");
 	}
 		
@@ -32,6 +33,22 @@ public class PersonController
 	public List<String> getPersons()
 	{
 		return DB.root.getPersons().stream().map(p -> p.getLastname()).collect(Collectors.toList());
+	}
+	
+	@Get("/size")
+	public Integer getSize()
+	{
+		return DB.root.getPersons().size();
+	}
+	
+	@Get("/personFilter")
+	public List<Person> personFilter()
+	{
+		List<Person> collect = DB.root.getPersons().parallelStream().filter(p -> p.getLastname().equalsIgnoreCase("Koch")).collect(Collectors.toList());
+
+		System.out.println(collect.size());
+
+		return collect;
 	}
 	
 	@Get("/init")
