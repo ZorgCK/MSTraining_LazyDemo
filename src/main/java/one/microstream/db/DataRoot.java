@@ -1,13 +1,14 @@
 package one.microstream.db;
 
 import one.microstream.collections.lazy.LazyArrayList;
+import one.microstream.collections.lazy.LazySegmentUnloader;
 import one.microstream.domain.Person;
 
 
 public class DataRoot
 {
-	private LazyArrayList<Person> persons = new LazyArrayList<Person>();
-
+	private LazyArrayList<Person> persons = new LazyArrayList<Person>(1000, new LazySegmentUnloader.Timed(200));
+	
 	public LazyArrayList<Person> getPersons()
 	{
 		return persons;
@@ -17,7 +18,4 @@ public class DataRoot
 	{
 		this.persons = persons;
 	}
-	
-	
-	
 }
