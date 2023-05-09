@@ -2,7 +2,6 @@ package one.microstream.domain;
 
 public class Person
 {
-
 	private String	firstname;
 	private String	lastname;
 	private String	mail;

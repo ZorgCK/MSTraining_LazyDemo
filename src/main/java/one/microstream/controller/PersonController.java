@@ -20,22 +20,18 @@ public class PersonController
 	{
 		IntStream.range(1, 201).forEach(i -> {
 			List<Person> persons = MockupUtils.loadMockupData();			
-			DB.root.getPersons().get().addAll(persons);
+			DB.root.getPersons().addAll(persons);
 		});
 				
-		DB.storageManager.store(DB.root.getPersons().get());
+		DB.storageManager.store(DB.root.getPersons());
 
-		System.out.println(DB.root.getPersons().get().size());
-		
-//		Lazy.clear(DB.root.getPersons());
-		
 		return HttpResponse.ok("Persons successfully created!");
 	}
 		
 	@Get
 	public List<String> getPersons()
 	{
-		return DB.root.getPersons().get().stream().map(p -> p.getLastname()).collect(Collectors.toList());
+		return DB.root.getPersons().stream().map(p -> p.getLastname()).collect(Collectors.toList());
 	}
 	
 	@Get("/init")

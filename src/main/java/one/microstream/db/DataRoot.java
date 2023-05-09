@@ -1,22 +1,19 @@
 package one.microstream.db;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import one.microstream.collections.lazy.LazyArrayList;
 import one.microstream.domain.Person;
-import one.microstream.reference.Lazy;
 
 
 public class DataRoot
 {
-	private Lazy<List<Person>> persons = Lazy.Reference(new ArrayList<Person>());
+	private LazyArrayList<Person> persons = new LazyArrayList<Person>();
 
-	public Lazy<List<Person>> getPersons()
+	public LazyArrayList<Person> getPersons()
 	{
 		return persons;
 	}
 
-	public void setPersons(Lazy<List<Person>> persons)
+	public void setPersons(LazyArrayList<Person> persons)
 	{
 		this.persons = persons;
 	}
