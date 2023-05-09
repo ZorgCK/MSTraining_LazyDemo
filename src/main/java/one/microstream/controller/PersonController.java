@@ -44,7 +44,7 @@ public class PersonController
 	@Get("/personFilter")
 	public List<Person> personFilter()
 	{
-		List<Person> collect = DB.root.getPersons().parallelStream().filter(p -> p.getLastname().equalsIgnoreCase("Koch")).collect(Collectors.toList());
+		List<Person> collect = DB.root.getPersons().stream().filter(p -> p.getLastname().equalsIgnoreCase("Koch")).collect(Collectors.toList());
 
 		System.out.println(collect.size());
 
