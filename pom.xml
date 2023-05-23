@@ -28,6 +28,17 @@
 			<id>central</id>
 			<url>https://repo.maven.apache.org/maven2</url>
 		</repository>
+
+		<repository>
+			<id>microstream-maven-snapshots</id>
+			<url>https://repo.microstream.one/repository/maven-snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
 	</repositories>
 
 	<dependencies>
@@ -84,12 +95,12 @@
 		<dependency>
 			<groupId>one.microstream</groupId>
 			<artifactId>microstream-storage-embedded</artifactId>
-			<version>08.00.00-MS-GA</version>
+			<version>09.00.00-MS-GA-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>one.microstream</groupId>
 			<artifactId>microstream-storage-embedded-configuration</artifactId>
-			<version>08.00.00-MS-GA</version>
+			<version>09.00.00-MS-GA-SNAPSHOT</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
 		<dependency>
@@ -123,7 +134,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
 					<!-- Uncomment to enable incremental compilation -->
-					<!-- <useIncrementalCompilation>false</useIncrementalCompilation> -->
+					<!--
+					<useIncrementalCompilation>false</useIncrementalCompilation> -->
 
 					<annotationProcessorPaths
 						combine.children="append">

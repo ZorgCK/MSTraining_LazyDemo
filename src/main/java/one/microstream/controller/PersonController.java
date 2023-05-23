@@ -1,5 +1,6 @@
 package one.microstream.controller;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -44,10 +45,16 @@ public class PersonController
 	@Get("/personFilter")
 	public List<Person> personFilter()
 	{
-		List<Person> collect = DB.root.getPersons().stream().filter(p -> p.getLastname().equalsIgnoreCase("Koch")).collect(Collectors.toList());
+		long start = Instant.now().toEpochMilli();
+		
+		List<Person> collect = DB.root.getPersons().stream()
+			.filter(p -> p.getLastname().equalsIgnoreCase("Koch")).collect(Collectors.toList());
 
-		System.out.println(collect.size());
-
+		long stop = Instant.now().toEpochMilli();
+		long result = stop - start;
+		
+		System.out.println(collect.size() + " - " + result + " milliseconds");
+		
 		return collect;
 	}
 	
