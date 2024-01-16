@@ -3,8 +3,9 @@ package one.microstream.db;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.serializer.reference.Lazy;
+
 import one.microstream.domain.Person;
-import one.microstream.reference.Lazy;
 
 
 public class DataRoot
