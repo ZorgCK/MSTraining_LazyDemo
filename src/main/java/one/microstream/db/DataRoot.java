@@ -5,8 +5,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import org.eclipse.serializer.reference.Lazy;
+
 import one.microstream.domain.Person;
-import one.microstream.reference.Lazy;
 
 
 public class DataRoot
