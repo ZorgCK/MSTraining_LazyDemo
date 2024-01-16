@@ -5,6 +5,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import org.eclipse.serializer.reference.Lazy;
+
 import io.micronaut.core.annotation.Nullable;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Controller;
@@ -12,7 +14,6 @@ import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.QueryValue;
 import one.microstream.db.DB;
 import one.microstream.domain.Person;
-import one.microstream.reference.Lazy;
 import one.microstream.utils.MockupUtils;
 
 

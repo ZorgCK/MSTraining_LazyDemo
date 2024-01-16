@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import one.microstream.persistence.types.Persister;
-import one.microstream.persistence.types.Storer;
-import one.microstream.reference.Lazy;
+import org.eclipse.serializer.persistence.types.Persister;
+import org.eclipse.serializer.persistence.types.Storer;
+import org.eclipse.serializer.reference.Lazy;
 
 
 public class Persons
