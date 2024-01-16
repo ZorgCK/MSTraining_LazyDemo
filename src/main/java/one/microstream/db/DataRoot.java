@@ -4,8 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.serializer.reference.Lazy;
+
 import one.microstream.domain.Person;
-import one.microstream.reference.Lazy;
 
 
 public class DataRoot
