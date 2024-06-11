@@ -1,6 +1,7 @@
 package one.microstream.db;
 
-import one.microstream.collections.lazy.LazyArrayList;
+import org.eclipse.serializer.collections.lazy.LazyArrayList;
+
 import one.microstream.domain.Person;
 
 
